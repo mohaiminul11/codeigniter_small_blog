@@ -1,0 +1,32 @@
+body{
+    background-color: #7ABA57;
+}
+.centered-form{
+	margin-top: 150px;
+}
+
+.centered-form .panel{
+	background: #FFFFFF;
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+  border-radius: 0;
+}
+
+.btn{
+  background-color:#43A047;
+}
+
+.btn:hover{
+  background-color:#216b24;
+}
+
+.message {
+  /*margin: px 0 0;*/
+  margin-right: 15px;
+  color: #b3b3b3;
+  font-size: 12px;
+  text-align: right;
+}
+.message a {
+  color: #4CAF50;
+  text-decoration: none;
+}

@@ -1,0 +1,42 @@
+/*HomePage*/
+.blog_post .btn-primary{
+  margin-top:10px;
+}
+.copyright p{
+  text-align: center;
+  background-color: rgb(223, 226, 225);
+  padding:10px 0;
+}
+
+
+/*Post Page Specific*/
+.comment{
+  border-top:4px solid black;
+  padding-top:20px;
+}
+
+.comment-button{
+  color:white;
+  background-color:rgb(56, 60, 58);
+  margin-top:5px;
+}
+.comment-button:hover{
+  color:white;
+  background-color:black;
+}
+.new_comment{
+  margin-top:30px;
+}
+.new_comment h2{
+  padding:10px 0;
+  border-top:2px solid black;
+  border-bottom:2px solid black;
+}
+.comment_body{
+  padding-left: 10px;
+  border-bottom: 2px solid #F5F5F5;
+  padding-bottom:5px;
+}
+.comment_body:last-child{
+  border-bottom: 0px solid black;
+}
