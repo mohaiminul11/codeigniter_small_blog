@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Personal BLog</title>
+    <title>My Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()."asset/css/bootstrap.min.css"?>" rel="stylesheet">
@@ -55,6 +55,11 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="<?=base_url()."register"?>"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                  <li><a href="<?=base_url()."login"?>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -14,9 +14,9 @@
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()."asset/css/bootstrap.min.css"?>" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="asset/admin/css/sb-admin-2.css" rel="stylesheet">
+    <link href="<?=base_url()."asset/admin/css/sb-admin-2.css"?>" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="asset/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()."asset/font-awesome/css/font-awesome.min.css"?>" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -261,13 +261,13 @@
                             <a href="#"><i class="glyphicon glyphicon-pushpin"></i> Posts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">All Posts</a>
+                                    <a href="<?=base_url()."admin/allposts"?>">All Posts</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Add New</a>
+                                    <a href="<?=base_url()."admin/newpost"?>">Add New</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Categories</a>
+                                    <a href="<?=base_url()."admin/categories"?>">Categories</a>
                                 </li>
 
                             </ul>

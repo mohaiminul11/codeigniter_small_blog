@@ -19,10 +19,9 @@ class Login extends CI_Controller{
   {
     $this->form_validation->set_rules(
         'username', 'Username',
-        'required|is_unique[user.username]',
+        'required',
         array(
-                'required'      => 'You have not provided %s.',
-                'is_unique'     => 'This %s already exists.',
+                'required'      => 'You have not provided %s.'
         )
         );
         $this->form_validation->set_rules(
