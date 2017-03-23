@@ -17,6 +17,10 @@
           echo $this->session->userdata('register');
           $this->session->unset_userdata('register');
         }
+        if($this->session->userdata('loginfailed')!=null){
+          echo $this->session->userdata('loginfailed');
+          $this->session->unset_userdata('loginfailed');
+        }
         ?>
 
       </div>

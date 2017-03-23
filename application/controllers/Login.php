@@ -36,17 +36,18 @@ class Login extends CI_Controller{
      }
      else
      {
-       echo "Successful";
-      //  if(isset($_POST['submit'])){
-      //    $username=$this->input->post('username');
-      //    $password=$this->input->post('password');
-      //    $res=$this->AuthModel->userAuthenticate($username,$password);
-      //    if($res==true){
-      //      Redirect('User');
-      //    }else{
-      //      Redirect('Login');
-      //    }
-      //  }
+      //  echo "Successful";
+       if(isset($_POST['submit'])){
+         $username=$this->input->post('username');
+         $password=$this->input->post('password');
+         $res=$this->AuthModel->userAuthenticate($username,$password);
+         if($res==true){
+           Redirect('User');
+         }else{
+           $this->session->set_userdata(array('loginfailed'=>'Login Failed!'));
+           Redirect('Login');
+         }
+       }
      }
 
   }

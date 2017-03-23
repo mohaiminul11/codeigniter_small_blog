@@ -4,18 +4,21 @@
     <table class="table table-bordered table-striped">
       <thead>
         <th>Post Title</th>
+        <th>content</th>
         <th>Categories</th>
-        <th>Comments</th>
         <th>Date</th>
       </thead>
 
       <tbody>
+
+        <?php foreach ($posts as $post):?>
         <tr>
-          <td>Dummy Title</td>
-          <td>Any</td>
-          <th>5</th>
-          <th><?=date("Y-m-d"); ?></th>
+          <td><?=$post['title']?></td>
+          <td><?=$post['content']?></td>
+          <td><?=$post['cat_name']?></td>
+          <td><?=$post['date']?></td>
         </tr>
+      <?php endforeach; ?>
       </tbody>
     </table>
   </div>
