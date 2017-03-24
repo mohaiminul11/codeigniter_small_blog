@@ -7,6 +7,7 @@
         <th>content</th>
         <th>Categories</th>
         <th>Date</th>
+        <th>Action</th>
       </thead>
 
       <tbody>
@@ -17,6 +18,7 @@
           <td><?=$post['content']?></td>
           <td><?=$post['cat_name']?></td>
           <td><?=$post['date']?></td>
+          <td><a href="<?=base_url()."admin/editpost"?>">Edit</a></td>
         </tr>
       <?php endforeach; ?>
       </tbody>

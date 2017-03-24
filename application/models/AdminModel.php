@@ -19,6 +19,12 @@ class AdminModel extends CI_Model{
   {
     return $this->db->get('categories')->result_array();
   }
+  // Single Category
+  public function singleCategory($id)
+  {
+    $this->db->where('cat_id', $id);
+    return $this->db->get('categories')->result_array();
+  }
   //Add category
   public function addCategory($data)
   {
@@ -31,8 +37,22 @@ class AdminModel extends CI_Model{
     }
   }
   //update category
-  // delete categor(optional)
-
+  public function updateCategory($id,$data)
+  {
+    $this->db->where('cat_id', $id);
+    $this->db->update('categories', $data);
+    if ($this->db->affected_rows()>0) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+  // delete category
+  public function deleteCategory($id)
+  {
+    $this->db->where('cat_id', $id);
+    $this->db->delete('categories');
+  }
   // All posts
   public function AllPosts()
   {

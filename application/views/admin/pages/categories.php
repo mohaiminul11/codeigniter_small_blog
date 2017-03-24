@@ -45,9 +45,9 @@
     </div>
     <div class="col-md-6">
       <h3>Categories</h3>
-      <?php echo "<pre>";
+      <!-- <?php echo "<pre>";
       print_r($categories);
-      ?>
+      ?> -->
       <table class="table table-bordered table-striped">
         <thead>
           <th>Name</th>
@@ -55,11 +55,13 @@
           <th>Edit</th>
         </thead>
         <tbody>
+          <?php foreach($categories as $cat): ?>
           <tr>
-            <td>Any</td>
-            <td>Any Category</td>
-            <td><a href="<?=base_url()."admin/editCategory"?>" class="btn btn-info">Edit</a></button></td>
+            <td><?=$cat['cat_name']?></td>
+            <td><?=$cat['description']?></td>
+            <td><a href="<?=base_url()."admin/editCategory/".$cat['cat_id']?>" class="btn btn-info">Edit</a><a class="btn btn-danger" href="<?=base_url()."Admin/deleteCategory/".$cat['cat_id']?>">Delete</a></button></td>
           </tr>
+        <?php endforeach; ?>
         </tbody>
       </table>
     </div>

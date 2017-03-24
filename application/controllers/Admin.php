@@ -27,11 +27,15 @@ class Admin extends CI_Controller{
     $data['main_content']=$this->load->view('admin/pages/all-posts',$data,TRUE);
     $this->load->view('admin/admin-master', $data);
   }
+
+  // New Post
   function newPost(){
     $data['category']=$this->AdminModel->allCategories();
     $data['main_content']=$this->load->view('admin/pages/new-post',$data,TRUE);
     $this->load->view('admin/admin-master', $data);
   }
+
+  // Adding new post
   public function addNewPost()
   {
     $this->form_validation->set_rules(
@@ -71,6 +75,12 @@ class Admin extends CI_Controller{
     }
   }
 
+
+  // Edit Post
+public function editpost($id)
+{
+  # code...
+}
 //categories
 
   public function categories()
@@ -117,14 +127,59 @@ class Admin extends CI_Controller{
 
   }
 
-  public function editCategory()
+  public function editCategory($id)
   {
-    $data['main_content']=$this->load->view('admin/pages/edit-category', '',TRUE);
+    $data['singlecat']=$this->AdminModel->singleCategory($id);
+    $data['main_content']=$this->load->view('admin/pages/edit-category', $data,TRUE);
     $this->load->view('admin/admin-master', $data);
   }
 
   public function updateCategory()
   {
+    $this->form_validation->set_rules(
+        'name', 'Category Name',
+        'required',
+        array(
+                'required'      => 'You have not provided %s.'
+        )
+        );
+
+        $this->form_validation->set_rules(
+            'description', 'Description',
+            'required',
+            array(
+                    'required'      => 'You have not provided %s.'
+            )
+            );
+
+        if ($this->form_validation->run() == FALSE)
+        {
+          $data['singlecat']=$this->AdminModel->singleCategory($this->input->post('id'));
+          $data['main_content']=$this->load->view('admin/pages/edit-category', $data,TRUE);
+          $this->load->view('admin/admin-master', $data);
+        }
+        else
+        {
+          $data=array('cat_name'=>$this->input->post('name'),'description'=>$this->input->post('description'));
+          $res=$this->AdminModel->updateCategory($this->input->post('id'),$data);
+          if($res){
+            Redirect("Admin/categories");
+          }else{//If updating fails
+            $this->session->set_userdata(array(
+              'updatecat' => 'Category update Failed!'
+            ));
+            // get back to edit category page
+            $data['singlecat']=$this->AdminModel->singleCategory($this->input->post('id'));
+            $data['main_content']=$this->load->view('admin/pages/edit-category', $data,TRUE);
+            $this->load->view('admin/admin-master', $data);
+          }
+        }
+  }
+  // delete Category
+  public function deleteCategory($id)
+  {
+    $res=$this->AdminModel->deleteCategory($id);
+    Redirect("Admin/categories");
 
   }
 
