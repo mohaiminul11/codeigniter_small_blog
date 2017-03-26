@@ -9,11 +9,6 @@ class AdminModel extends CI_Model{
     //Codeigniter : Write Less Do More
   }
 
-  // all posts
-  // add new post
-  // edit/update post
-  // delete post(optional)
-
   // All categories
   public function allCategories()
   {
@@ -53,13 +48,20 @@ class AdminModel extends CI_Model{
     $this->db->where('cat_id', $id);
     $this->db->delete('categories');
   }
-  // All posts
-  public function AllPosts()
+
+  // Single Post
+  public function singlePost($id)
   {
-    // return $this->db->get('blog_post')->result_array();
+    $this->db->where('id', $id);
+    return $this->db->get('blog_post')->result_array();
+  }
+  // All posts
+  public function AllPosts($id)
+  {
     $this->db->select('*');
     $this->db->from('blog_post');
     $this->db->join('categories', 'blog_post.cat_id = categories.cat_id');
+    $this->db->where('blog_post.userid', $id);
     return $this->db->get()->result_array();
   }
   // Add New post
@@ -71,5 +73,20 @@ class AdminModel extends CI_Model{
     }else{
       return false;
     }
+  }
+
+  public function modifyPost($id,$data)
+  {
+    $this->db->where('id', $id);
+    $this->db->update('blog_post', $data);
+    if($this->db->affected_rows()>0){
+      return true;
+    }
+  }
+
+  public function deletePost($id)
+  {
+    $this->db->where('id', $id);
+    $this->db->delete('blog_post');
   }
 }

@@ -3,24 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Blog extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	public function __construct()
+  {
+    parent::__construct();
+    //Codeigniter : Write Less Do More
+    $this->load->model(array('BlogModel'));
+  }
 	public function index()
 	{
-		$data=array();
+		$data['posts']=$this->BlogModel->AllPosts();
+		$data['categories']=$this->BlogModel->allCategories();
 		$data['content']=$this->load->view('pages/home',$data,TRUE);
 		$this->load->view('master',$data);
 	}
@@ -31,9 +23,19 @@ class Blog extends CI_Controller {
 	 * @param [int post_id]
 	 * @return  [take to the post]
 	 */
-	public function post()
+	public function post($id)
 	{
-		$data['content']=$this->load->view('pages/post','',TRUE);
+		$data['post']=$this->BlogModel->post($id);
+		$data['categories']=$this->BlogModel->allCategories();
+		$data['content']=$this->load->view('pages/post',$data,TRUE);
 		$this->load->view('master',$data);
+	}
+	public function postsByCategory($id)
+	{
+		$data['posts']=$this->BlogModel->postsByCategory($id);
+		$data['categories']=$this->BlogModel->allCategories();
+		$data['content']=$this->load->view('pages/home',$data,TRUE);
+		$this->load->view('master',$data);
+
 	}
 }

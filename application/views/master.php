@@ -46,7 +46,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <!-- <li>
                         <a href="#">About</a>
                     </li>
                     <li>
@@ -54,7 +54,7 @@
                     </li>
                     <li>
                         <a href="#">Contact</a>
-                    </li>
+                    </li> -->
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -87,7 +87,7 @@
             <div class="col-md-4">
 
                 <!-- Blog Search Well -->
-                <div class="well">
+              <!--  <div class="well">
                     <h4>Blog Search</h4>
                     <div class="input-group">
                         <input type="text" class="form-control">
@@ -97,8 +97,7 @@
                         </button>
                         </span>
                     </div>
-                    <!-- /.input-group -->
-                </div>
+                </div>-->
 
                 <!-- Blog Categories Well -->
                 <div class="well">
@@ -106,14 +105,10 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
+                              <?php foreach ($categories as $category): ?>
+                                <li><a href="<?=base_url()."blog/postsbycategory/".$category['cat_id']?>"><?=$category['cat_name']?></a>
                                 </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
+                              <?php endforeach; ?>
                             </ul>
                         </div>
                         <!-- /.col-lg-6 -->
@@ -136,8 +131,23 @@
 
                 <!-- Side Widget Well -->
                 <div class="well">
-                    <h4>Side Widget Well</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                    <h4>About the project</h4>
+                    <p>I have implemented features like</p>
+                    <ul>
+                      <li>User Auth</li>
+                      <li>password hashing</li>
+                      <li>All posts</li>
+                      <li>View indivisual post</li>
+                      <li>See posts by category</li>
+                    </ul>
+                    <h4>For Admin</h4>
+                    <ul>
+                      <li>Auth</li>
+                      <li>Add post</li>
+                      <li>view all post</li>
+                      <li>edit & delete post</li>
+                      <li>Add view edit and delete categories</li>
+                    </ul>
                 </div>
 
             </div>
@@ -151,7 +161,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12 copyright">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; My Blog  <?=date('Y')?></p>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

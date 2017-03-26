@@ -40,7 +40,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">My Blog</a>
+                <a class="navbar-brand" href="<?=base_url()?>">My Blog</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -49,7 +49,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-messages">
+                    <!--<ul class="dropdown-menu dropdown-messages">
                         <li>
                             <a href="#">
                                 <div>
@@ -92,11 +92,11 @@
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
-                    </ul>
-                    <!-- /.dropdown-messages -->
+                    </ul> -->
+                    <!-- /.dropdown-messages
                 </li>
-                <!-- /.dropdown -->
-                <li class="dropdown">
+          -->
+                <!--<li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -172,10 +172,10 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-tasks -->
-                </li>
+
+                </li>-->
                 <!-- /.dropdown -->
-                <li class="dropdown">
+                <!--<li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -232,8 +232,8 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-alerts -->
-                </li>
+
+                </li>-->
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -266,14 +266,15 @@
                                 <li>
                                     <a href="<?=base_url()."admin/newpost"?>">Add New</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="<?=base_url()."admin/categories"?>">Categories</a>
-                                </li>
+                                </li> -->
 
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
+                        <li><a href="<?=base_url()."admin/categories"?>"><i class="glyphicon glyphicon-file"></i>Categories</a></li>
+                        <!--<li>
                             <a href="#"><i class="glyphicon glyphicon-file"></i>Pages<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -283,8 +284,8 @@
                                     <a href="morris.html">Add New</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+
+                        </li>-->
 
 
                     </ul>

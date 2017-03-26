@@ -23,7 +23,7 @@ class Admin extends CI_Controller{
   // posts
   public function allPosts()
   {
-    $data['posts']=$this->AdminModel->AllPosts();
+    $data['posts']=$this->AdminModel->AllPosts($this->session->userdata('id'));
     $data['main_content']=$this->load->view('admin/pages/all-posts',$data,TRUE);
     $this->load->view('admin/admin-master', $data);
   }
@@ -79,9 +79,60 @@ class Admin extends CI_Controller{
   // Edit Post
 public function editpost($id)
 {
-  # code...
+  $data['category']=$this->AdminModel->allCategories();
+  $data['singlepost']=$this->AdminModel->singlePost($id);
+  $data['main_content']=$this->load->view('admin/pages/edit-post', $data, TRUE);
+  $this->load->view('admin/admin-master', $data);
 }
-//categories
+
+// Update posts
+public function updatePost()
+{
+  $this->form_validation->set_rules(
+      'title', 'Title',
+      'required',
+      array(
+              'required'      => '%s field must be provided.'
+      )
+      );
+    $this->form_validation->set_rules(
+        'post', 'Post',
+        'required',
+        array(
+                'required'      => '%s field must be provided.'
+        )
+        );
+
+  if ($this->form_validation->run() == FALSE)
+  {
+    $data['category']=$this->AdminModel->allCategories();
+    $data['singlepost']=$this->AdminModel->singlePost($id);
+    $data['main_content']=$this->load->view('admin/pages/edit-post', $data, TRUE);
+    $this->load->view('admin/admin-master', $data);
+  }
+  else
+  {
+    $data=array('userid'=>$this->session->userdata('id'),'title'=>$this->input->post('title'),'content'=>$this->input->post('post'),'cat_id'=>$this->input->post('category'));
+
+    $res=$this->AdminModel->modifyPost($this->input->post('id'),$data);
+    if(!$res){
+      $this->session->set_userdata(array('updateFailed'=>'Failed to update data!'));
+      $data['categories']=$this->AdminModel->allCategories();
+      $data['main_content']=$this->load->view('admin/pages/new-post',$data,TRUE);
+      $this->load->view('admin/admin-master', $data);
+    }
+    else{
+      Redirect('Admin/allPosts');
+    }
+  }
+}
+// DELETE POST
+public function deletePost($id)
+{
+  $this->AdminModel->deletePost($id);
+  Redirect('Admin/allposts');
+}
+// categories
 
   public function categories()
   {
